@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react';
 
 export default function App() {
-	const dolar = '$';
-	const bolivar = 'Bs.';
 
 	interface FormValues {
 		dolarOfficial: number | null;
@@ -61,56 +59,113 @@ export default function App() {
 
 	return (
 		<>
-			<div className='mb-10 bg'>
-				<p>Dolar oficial: ....................................................................{dolarOfficial ?? 0} {bolivar}</p>
-				<p>Dolar paralelo: ................................................................{dolarParallel ?? 0} {bolivar}</p>
-				<p>Brecha cambiaria: ..........................................................{currencyGap ?? 0} {bolivar}</p>
-				<p>Porcentaje equivalente de dolar oficial ({dolarOfficial ?? 0} {bolivar}): ........{equivalentPercentageOfDolarOfficial}%</p>
-				<p>Precio del producto: ......................................................{productPrice ?? 0} {dolar}</p>
-				<p>Aumento del producto: ................................................{productIncrease}$</p>
-				<p>El precio del producto debe ser: .................................{productPriceWithPercentage} {dolar}</p>
-			</div>
-
-			<h1 className='text-center my-8 text-4xl text-white'>Ajusta tu precio</h1>
+			<h1 className='text-center mt-4 text-4xl text-white'>Ajusta tu precio</h1>
+			{/* Tarjetas */}
+			<ul className='ul-container'>
+				<li className='card'>
+					<h3 className='text-center'>Dólar oficial</h3>
+					<div className='card-content'>
+						<p className='card-text'>
+							{dolarOfficial ?? 0}
+							<span className='text-sm absolute -right-6 bottom-1'>Bs.</span>
+						</p>
+					</div>
+				</li>
+				<li className='card'>
+					<h3 className='text-center'>Dólar paralelo</h3>
+					<div className='card-content'>
+						<p className='card-text'>
+							{dolarParallel ?? 0}
+							<span className='text-sm absolute -right-6 bottom-1'>Bs.</span>
+						</p>
+					</div>
+				</li>
+				<li className='card'>
+					<h3 className='text-center'>Brecha</h3>
+					<div className='card-content'>
+						<p className='card-text'>
+							{currencyGap ?? 0}
+							<span className='text-sm absolute -right-6 bottom-1'>Bs.</span>
+						</p>
+					</div>
+				</li>
+				<li className='card'>
+					<h3 className='text-center'>Brecha %</h3>
+					<div className='card-content'>
+						<p className='card-text'>
+							{equivalentPercentageOfDolarOfficial}
+							<span className='text-sm absolute -right-6 bottom-1'>%</span>
+						</p>
+					</div>
+				</li>
+				<li className='card'>
+					<h3 className='text-center'>Precio del producto</h3>
+					<div className='card-content'>
+						<p className='card-text'>
+							{productPrice ?? 0}
+							<span className='text-sm absolute -right-6 bottom-1'>$</span>
+						</p>
+					</div>
+				</li>
+				<li className='card'>
+					<h3 className='text-center'>Aumento</h3>
+					<div className='card-content'>
+						<p className='card-text'>
+							{productIncrease}
+							<span className='text-sm absolute -right-6 bottom-1'>$</span>
+						</p>
+					</div>
+				</li>
+				<li className='col-span-2 card '>
+					<h3 className='text-center'>Total precio del producto</h3>
+					<div className='card-content'>
+						<p className='card-text'>
+							{productPriceWithPercentage}
+							<span className='text-sm absolute -right-6 bottom-1'>$</span>
+						</p>
+					</div>
+				</li>
+			</ul>
 
 			{/* Formulario */}
 			<form className='formContainer'>
-				{/* Dolar oficial */}
+				{/* Dólar oficial */}
 				<div className='inputContainer'>
-					<label htmlFor="dolarOfficial" className='inputLabel'>Dolar oficial</label>
+					<label htmlFor="dolarOfficial" className='inputLabel'>Dólar oficial</label>
 					<input
 						type="number"
 						name="dolarOfficial"
 						id="dolarOfficial"
-						placeholder="Dolar oficial"
+						placeholder="Dólar oficial"
 						value={dolarOfficial ?? ""}
 						onChange={handleChange}
 						className='inputText'
 					/>
 				</div>
 
-				{/* Dolar paralelo */}
+				{/* Dólar paralelo */}
 				<div className='inputContainer'>
-					<label htmlFor="dolarParallel" className='inputLabel'>Dolar paralelo</label>
+					<label htmlFor="dolarParallel" className='inputLabel'>Dólar paralelo</label>
 					<input
 						type="number"
 						name="dolarParallel"
 						id="dolarParallel"
-						placeholder="Dolar paralelo"
+						placeholder="Dólar paralelo"
 						value={dolarParallel ?? ''}
 						onChange={handleChange}
 						className='inputText'
 					/>
+					{errorMessage && <p className=' mt-2 text-rose-500 text-sm'>El dólar paralelo debe ser mayor al dólar oficial</p>}
 				</div>
 
-				{/* Precio de producto*/}
+				{/* Precio del producto */}
 				<div className='inputContainer'>
-					<label htmlFor="productPrice" className='inputLabel'>Precio de producto en $</label>
+					<label htmlFor="productPrice" className='inputLabel'>Precio del producto en $</label>
 					<input
 						type="number"
 						name="productPrice"
 						id="productPrice"
-						placeholder="Precio de producto"
+						placeholder="Precio del producto"
 						value={productPrice ?? ''}
 						onChange={handleChange}
 						className='inputText'
@@ -122,10 +177,6 @@ export default function App() {
 					<button onClick={handleReset} type='button' className='btn'>Resetear</button>
 				</div>
 			</form>
-
-			{errorMessage && <p className='error text-center my-8 text-red-600 text-2xl'>El dolar oficial debe ser menor o igual al dolar paralelo</p>}
-
 		</>
 	);
 }
-

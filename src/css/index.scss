@@ -4,48 +4,46 @@
 
 @layer components {
 	body {
-		@apply bg-black;
+		@apply bg-black text-white;
 	}
 
 	.formContainer {
-		@apply bg w-full max-w-sm mx-auto p-4 rounded-lg utl-flex-col gap-2;
+		@apply bg-gray-900 w-full max-w-md mx-auto p-4 rounded-lg flex flex-col gap-2 mb-16;
 
 		.inputContainer {
-			@apply utl-flex-col w-full max-w-sm mx-auto p-2 rounded bg2;
+			@apply flex flex-col w-full max-w-md mx-auto p-4 bg-gray-950 rounded-lg;
 
 			.inputLabel {
 				@apply ml-2 font-semibold;
 			}
 
 			.inputText {
-				@apply p-2 bg-white border border-gray-500 rounded-lg;
+				@apply p-2 bg-white border border-gray-500 rounded-lg text-gray-950;
 			}
 		}
 	}
 
 	.btnsContainer {
-		@apply utl-flex-row;
+		@apply flex flex-row justify-around gap-4;
 
 		.btn {
 			@apply w-full max-w-sm mx-auto bg-blue-500 text-white font-semibold p-2 rounded-lg;
 		}
 	}
-}
 
-@layer utilities {
-	.bg {
-		@apply bg-yellow-500;
+	.ul-container {
+		@apply grid grid-cols-2 gap-2 px-1 max-w-md mx-auto my-4;
 	}
 
-	.bg2 {
-		@apply bg-green-500;
+	.card {
+		@apply bg-gray-900 rounded-lg min-h-24 p-2 flex flex-col
 	}
 
-	.utl-flex-col {
-		@apply flex flex-col;
+	.card-content {
+		@apply flex-1 flex justify-center items-center;
 	}
 
-	.utl-flex-row {
-		@apply flex flex-row justify-around gap-4;
+	.card-text {
+		@apply text-center text-4xl font-bold relative text-yellow-500;
 	}
 }
