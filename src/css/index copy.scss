@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+	body {
+		@apply bg-black text-white;
+	}
+
+	.formContainer {
+		@apply bg-gray-900 w-full max-w-md mx-auto p-4 rounded-lg flex flex-col gap-2 mb-16;
+
+		.inputContainer {
+			@apply flex flex-col w-full max-w-md mx-auto p-4 bg-gray-950 rounded-lg;
+
+			.inputLabel {
+				@apply ml-2 font-semibold;
+			}
+
+			.inputText {
+				@apply p-2 bg-white border border-gray-500 rounded-lg text-gray-950;
+			}
+		}
+	}
+
+	.btnsContainer {
+		@apply flex flex-row justify-around gap-4;
+
+		.btn {
+			@apply w-full max-w-sm mx-auto bg-blue-500 text-white font-semibold p-2 rounded-lg;
+		}
+	}
+
+	.ul-container {
+		@apply grid grid-cols-2 gap-2 px-1 max-w-md mx-auto my-4;
+	}
+
+	.card {
+		@apply bg-gray-900 rounded-lg min-h-24 p-2 flex flex-col
+	}
+
+	.card-content {
+		@apply flex-1 flex justify-center items-center;
+	}
+
+	.card-text {
+		@apply text-center text-4xl font-bold relative text-yellow-500;
+	}
+}

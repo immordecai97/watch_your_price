@@ -7,27 +7,24 @@
 		@apply bg-black text-white;
 	}
 
-	.formContainer {
-		@apply bg-gray-900 w-full max-w-md mx-auto p-4 rounded-lg flex flex-col gap-2 mb-16;
-
-		.inputContainer {
-			@apply flex flex-col w-full max-w-md mx-auto p-4 bg-gray-950 rounded-lg;
-
-			.inputLabel {
-				@apply ml-2 font-semibold;
-			}
-
-			.inputText {
-				@apply p-2 bg-white border border-gray-500 rounded-lg text-gray-950;
-			}
-		}
+	.inputLabel {
+		@apply ml-2 font-semibold;
 	}
+
+	.inputContainer {
+		@apply text-yellow-500 font-bold  flex items-end justify-center;
+	}
+
+	.inputText {
+		@apply w-full bg-transparent text-center text-4xl font-bold pb-0 pt-3 outline-none placeholder:text-yellow-500 placeholder:text-opacity-50;
+	}
+
 
 	.btnsContainer {
 		@apply flex flex-row justify-around gap-4;
 
 		.btn {
-			@apply w-full max-w-sm mx-auto bg-blue-500 text-white font-semibold p-2 rounded-lg;
+			@apply w-full max-w-sm mx-auto text-gray-500 underline font-semibold p-2 rounded-lg border border-gray-500 outline-none;
 		}
 	}
 
@@ -36,7 +33,7 @@
 	}
 
 	.card {
-		@apply bg-gray-900 rounded-lg min-h-24 p-2 flex flex-col
+		@apply bg-gray-900 rounded-lg min-h-24 p-2
 	}
 
 	.card-content {
@@ -44,6 +41,6 @@
 	}
 
 	.card-text {
-		@apply text-center text-4xl font-bold relative text-yellow-500;
+		@apply text-center text-4xl font-bold;
 	}
 }
